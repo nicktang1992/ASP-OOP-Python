@@ -46,9 +46,10 @@ class Apartment(Property):
 		print("APARTMENT DETAILS")
 		print("laundry: %s" % self.laundry)
 		print("has balcony: %s" % self.balcony)
+		print()
 		
 	def prompt_init():
-		parent_init = Property.promtInit()
+		parent_init = Property.prompt_init()
 		laundry = get_valid_input("What laundry facilities does the property have?",Apartment.valid_laundries)
 		balcony = get_valid_input("Does the property have a balcony?", Apartment.valid_balconies)
 		parent_init.update({
@@ -77,6 +78,7 @@ class House(Property):
 		print("# of stories: {}".format(self.num_stories))
 		print("garage: {}".format(self.garage))
 		print("fensed yard: {}".format(self.fenced))
+		print()
 	
 	def prompt_init():
 		parent_init = Property.prompt_init()
@@ -186,5 +188,6 @@ class Agent():
 		self.property_list.append(PropertyClass(**init_args))
 		
 agent = Agent()
+agent.add_property()
 agent.add_property()
 agent.display_properties()
