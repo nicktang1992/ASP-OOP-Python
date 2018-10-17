@@ -1,6 +1,6 @@
 # class property, parent of apartments and houses
 class Property:
-	def prompt_init(self, square_feet='',beds='',baths='', **kwargs):
+	def __init__(self, square_feet='',beds='',baths='', **kwargs):
 		super().__init__(**kwargs)
 		self.square_feet = square_feet
 		self.num_bedrooms = beds
@@ -14,8 +14,8 @@ class Property:
 		print("bathrooms: {}".format(self.num_baths))
 		print()
 		
-	def promt_init():
-		return distinct(
+	def prompt_init():
+		return dict(
 				square_feet = input("Enter square feet: "),
 				beds = input ("Enter number of bedrooms: "),
 				baths = input("Enter number of baths: ")
@@ -137,28 +137,28 @@ class Rental:
 class HouseRental(Rental,House):
 	def prompt_init():
 		init = House.prompt_init();
-		init.upsate(Rental.prompt_init())
+		init.update(Rental.prompt_init())
 		return init
 	prompt_init = staticmethod(prompt_init)
 	
 class ApartmentRental(Rental,Apartment):
 	def prompt_init():
 		init = Apartment.prompt_init();
-		init.upsate(Rental.prompt_init())
+		init.update(Rental.prompt_init())
 		return init
 	prompt_init = staticmethod(prompt_init)
 	
 class ApartmentPurchase(Purchase,Apartment):
 	def prompt_init():
 		init = Apartment.prompt_init();
-		init.upsate(Purchase.prompt_init())
+		init.update(Purchase.prompt_init())
 		return init
 	prompt_init = staticmethod(prompt_init)
 	
 class HousePurchase(Purchase,House):
 	def prompt_init():
 		init = House.prompt_init();
-		init.upsate(Purchase.prompt_init())
+		init.update(Purchase.prompt_init())
 		return init
 	prompt_init = staticmethod(prompt_init)
 	
@@ -187,3 +187,4 @@ class Agent():
 		
 agent = Agent()
 agent.add_property()
+agent.display_properties()
