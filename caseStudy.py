@@ -1,7 +1,7 @@
 # class property, parent of apartments and houses
 class Property:
 	def prompt_init(self, square_feet='',beds='',baths='', **kwargs):
-		super()._init_(**kwargs)
+		super().__init__(**kwargs)
 		self.square_feet = square_feet
 		self.num_bedrooms = beds
 		self.num_baths = baths
@@ -36,8 +36,8 @@ class Apartment(Property):
 	valid_laundries = ("coin", "ensuite", "none")
 	valid_balconies = ("yes","no","solarium")
 	
-	def _init_(self, balcony = '', laundry = '', **kwargs):
-		super()._init_(**kwargs)
+	def __init__(self, balcony = '', laundry = '', **kwargs):
+		super().__init__(**kwargs)
 		self.balcony = balcony
 		self.laundry = laundry
 		
@@ -65,8 +65,8 @@ class House(Property):
 	valid_garage = ("attached","detached","none")
 	valid_fenced = ("yes","no")
 	
-	def _init_(self,num_stories = '', garage = '', fenced = '',**kwargs):
-		super()._init_(**kwargs)
+	def __init__(self,num_stories = '', garage = '', fenced = '',**kwargs):
+		super().__init__(**kwargs)
 		self.garage = garage
 		self.fenced = fenced
 		self.num_stories = num_stories
@@ -93,8 +93,8 @@ class House(Property):
 	prompt_init = staticmethod(prompt_init)
 	
 class Purchase:
-	def _init_(self,price='', taxes='', **kwargs):
-		super()._init_(**kwargs)
+	def __init__(self,price='', taxes='', **kwargs):
+		super().__init__(**kwargs)
 		self.price = price
 		self.taxes = taxes
 		
@@ -112,8 +112,8 @@ class Purchase:
 	prompt_init = staticmethod(prompt_init)
 
 class Rental:
-	def _init_(self,furnished='', utilities='',rent='',**kwargs):
-		super()._init_(**kwargs)
+	def __init__(self,furnished='', utilities='',rent='',**kwargs):
+		super().__init__(**kwargs)
 		self.furnished = furnished
 		self.rent = rent
 		self.utilities = utilities
@@ -163,7 +163,7 @@ class HousePurchase(Purchase,House):
 	prompt_init = staticmethod(prompt_init)
 	
 class Agent():
-	def _init_(self):
+	def __init__(self):
 		self.property_list = []
 		
 	def display_properties(self):
